@@ -22,6 +22,9 @@ Features include:
 - Centralized user account lockout
 - Docker container
 
+## Reason to fork
+Keyper hasn't been updated in over 2 years and the docker build from the original repo no longer works.
+
 ## Installation/Build
 Follow the steps to build docker image using source code:
 1. Clone this git repository
