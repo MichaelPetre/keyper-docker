@@ -34,7 +34,7 @@ sed -i "s/{{HOSTNAME}}/${HOSTNAME}/g" auth.sh.txt
 sed -i "s/{{HOSTNAME}}/${HOSTNAME}/g" authprinc.sh.txt
 
 cd /container/service/nginx/assets/etc/conf.d
-[ -f default.conf ] && mv default.conf /etc/nginx/conf.d
+[ -f default.conf ] && mv default.conf /etc/nginx/http.d
 
 [ -d /etc/nginx/certs ] || mkdir /etc/nginx/certs
 cp /container/service/nginx/assets/certs/* /etc/nginx/certs
@@ -47,7 +47,7 @@ if [ ! -e "$LDAP_TLS_CRT_PATH" ]; then
         openssl req -newkey rsa:2048 -nodes -keyout $LDAP_TLS_KEY_PATH -x509 -days 3650 -out $LDAP_TLS_CRT_PATH -subj "/CN=${HOSTNAME}"
 fi
 
-chown -R nginx:nginx /etc/nginx/conf.d/default.conf /etc/nginx/certs /var/lib/nginx
+chown -R nginx:nginx /etc/nginx/http.d/default.conf /etc/nginx/certs /var/lib/nginx
 
 [ -d /run/nginx ] || mkdir /run/nginx
 
